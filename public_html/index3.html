@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title>jQuery Crash Course | dom manipulation</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+        <style>
+            body{
+                font-size: 17px;
+                font-family: arial;
+                background: lightgray;
+                line-height: 1.5em;
+            }
+            header{
+                background:#333;
+                color:white;
+                padding:20px;
+                text-align: center;
+                border-bottom: 4px black solid;
+                margin-bottom: 10px;
+            }
+            #containter{
+                width:90%;
+                margin:auto;
+                padding:10px;
+            }
+            .myClass {
+                color:blue;
+                background:black
+            }
+            
+        </style>
+        
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h1>jQuery Crash Course</h1>
+        </header>
+        <div id ="containter">
+            <h1 id="heading1">Heading One</h1>
+            <p id="para1">
+                this is para one. <span> content I don't feel like writing everything 
+                out in the tutorial</span>
+            </p>
+        </div>
+        
+
+        <div id ="containter">
+            
+            <button id='btn1'>button1</button>
+            <p class="para1">This is a pragraph </p>
+            <p class="para2">This is also a pragraph </p>
+            <div id ="myDiv"></div>
+            
+            <input type="text" id ="newItem">
+            
+            <ul id = "list">
+                <li>List 1</li>
+                <li>List 2</li>
+                <li>List 3</li>
+                <li>List 4</li>
+            </ul>
+            
+            <a href="http://google.com">google</a>
+            
+            <ul id="users"></ul>
+            
+        </div>
+        
+        <script>
+           $(document).ready(function(){
+               //$('p.para1').css('color', 'red');
+               //$('p.para1').css({color: 'red', background: '#ccc'});
+               
+               //$('p.para2').addClass('myClass');
+               //$('p.para2').removeClass('myClass');
+               //$('#btn1').click(function(){
+                 // $('p.para2').toggleClass('myClass'); 
+               //});
+               
+               //$('#myDiv').text("hello world!");
+               //$('#myDiv').html("<h3>hello world!</h3>");
+               
+               //alert($("#myDiv").text());
+               
+               /*
+               $('ul').append('<li>Append LI</li>')
+               $('ul').prepend('<li>Preppend LI</li>')
+               
+               $('.para1').appendTo(".para2");
+               $('.para1').prependTo(".para2");
+               
+               $('ul').before('<h4>hello</h4>');
+               $('ul').after('<h4>world</h4>');
+               $('ul').empty();
+               $('ul').detach();
+               $('a').attr('target', '_blank')
+               alert($('a').attr('href'));
+               $('a').removeAttr('target');
+                               
+               //$('p').wrap('<h1>');
+               //$('p').wrapAll('<h1>');
+               */
+               $('#newItem').keyup(function(e){
+                  var code = e.which;
+                  if (code == 13)
+                  {
+                      e.preventDefault();
+                      $('ul').append('<li>'+e.target.value+'</li>')
+                  }
+               });
+               
+               var newArr = $('ul#list li').toArray();
+               //console.log(newArr);
+               
+               $.each(newArr, function(i, val){
+                  //$('#users').append('<li>'+val+'</li>')
+                  console.log(val.innerHTML);
+              });
+        
+        /*
+              var myArr = ['brad', 'kelly', 'nate', 'jose'];
+              
+              $.each(myArr, function(i, val){
+                  $('#users').append('<li>'+val+'</li>')
+              });
+               */
+           });
+        </script>
+    </body>
+</html>
